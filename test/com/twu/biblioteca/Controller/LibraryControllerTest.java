@@ -39,4 +39,25 @@ public class LibraryControllerTest {
 
     assertThat(books.size(), is(2));
   }
+
+
+  @Test
+  public void shouldGetIsIssuedStatus() {
+    LibraryController libraryController = new LibraryController();
+    Book book = new Book(1L, "HarryPotter", "J.K. Rowling", false);
+    libraryController.addBookToLibrary(book);
+    Boolean isIssued = libraryController.isBookIssued("HarryPotter");
+    assertThat(isIssued, is(true));
+  }
+
+  @Test
+  public void shouldUpdateIsIssuedStatus() {
+    Book book = new Book(1L, "HarryPotter1", "J.K. Rowling", false);
+    LibraryController libraryController = new LibraryController();
+    libraryController.addBookToLibrary(book);
+
+    libraryController.updateBookStatus(book,true);
+
+    assertThat(book.getIsIssued(), is(true));
+  }
 }

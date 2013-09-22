@@ -30,4 +30,21 @@ public class LibraryController {
     }
   }
 
+  public boolean isBookIssued(String title) {
+    for (Book book : getAllBooks())
+    {
+      if (book.getTitle().equals(title)) {
+        Boolean isIssued = book.getIsIssued();
+        if(!isIssued)
+          updateBookStatus(book,true);
+        return !isIssued;
+      }
+    }
+    return false;
+  }
+
+  public void updateBookStatus(Book book, boolean status) {
+    book.setIsIssued(status);
+  }
+
 }

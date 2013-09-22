@@ -10,6 +10,7 @@ public class LibraryApp {
   public static void main(String args[]) {
     String choice;
     int ch;
+    String chBook;
 
     LibraryController libraryController = new LibraryController();
     Library library = libraryController.createLibrary(1L,"Bangalore Library");
@@ -42,7 +43,14 @@ public class LibraryApp {
         case 1: libraryController.printBookList();
                 break;
 
-        case 2: System.out.println("case 2");
+        case 2: libraryController.printBookList();
+                System.out.println("Please enter book title to be issued");
+                chBook = sc.next();
+                if(libraryController.isBookIssued(chBook)) {
+                  System.out.println("Thank You! Enjoy the book.");
+                }
+                else
+                  System.out.println("Sorry we don't have that book yet.");
                 break;
 
         case 3: System.out.println("Please talk to a Librarian. Thank you.");
