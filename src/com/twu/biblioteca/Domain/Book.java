@@ -1,8 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Domain;
 
-public class Book {
+public class Book extends BaseModal {
 
-  private Long id;
   private String title;
   private String author;
   private Boolean isIssued;

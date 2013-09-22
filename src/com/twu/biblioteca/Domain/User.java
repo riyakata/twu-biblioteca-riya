@@ -1,8 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Domain;
 
-public class User {
+public class User extends BaseModal {
 
-  private Long id;
   private String name;
   private Long employeeId;
 

@@ -1,8 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Domain;
 
-public class Library {
+public class Library extends BaseModal {
 
-  private Long id;
   private String name;
 
   public Library(Long id, String name) {

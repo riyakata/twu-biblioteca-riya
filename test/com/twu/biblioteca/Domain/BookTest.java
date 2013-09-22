@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Domain;
 
+import com.twu.biblioteca.Domain.Book;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

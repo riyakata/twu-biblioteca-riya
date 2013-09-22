@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Controller;
+
+import com.twu.biblioteca.Domain.Library;
 
 import java.util.Scanner;
 
