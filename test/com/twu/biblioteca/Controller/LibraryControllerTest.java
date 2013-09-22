@@ -49,7 +49,7 @@ public class LibraryControllerTest {
     Book book = new Book(1L, "HarryPotter", "J.K. Rowling", false);
     libraryController.addBookToLibrary(book);
     Boolean isIssued = libraryController.isBookIssued("HarryPotter");
-    assertThat(isIssued, is(false));
+    assertThat(isIssued, is(true));
   }
 
   @Test

@@ -36,7 +36,7 @@ public class BookControllerTest {
 
     List books = bookController.getAllBooks();
 
-    assertThat(books.size(), is(2));
+    assertThat(books.size(), is(8));
   }
 
   @Test
@@ -45,7 +45,7 @@ public class BookControllerTest {
     bookController.addBook(new Book(1L, "HarryPotter", "J.K. Rowling", false));
     bookController.addBook(new Book(2L, "A Journey", "Tony Blair", false));
 
-    assertThat(bookController.books.size(), is(2));
+    assertThat(bookController.books.size(), is(10));
   }
 
   @Test
@@ -56,7 +56,7 @@ public class BookControllerTest {
 
     Boolean isIssued = bookController.isBookIssued("HarryPotter");
 
-    assertThat(isIssued, is(false));
+    assertThat(isIssued, is(true));
   }
 
   @Test
