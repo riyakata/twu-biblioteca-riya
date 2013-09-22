@@ -1,5 +1,6 @@
 package com.twu.biblioteca.Controller;
 
+import com.twu.biblioteca.Domain.Book;
 import com.twu.biblioteca.Domain.Library;
 
 import java.util.Scanner;
@@ -10,7 +11,18 @@ public class LibraryApp {
     String choice;
     int ch;
 
-    Library library = new Library(1L,"Bangalore Library");
+    LibraryController libraryController = new LibraryController();
+    Library library = libraryController.createLibrary(1L,"Bangalore Library");
+    libraryController.addBookToLibrary(new Book(1L, "HarryPotter", "J.K. Rowling", false));
+    libraryController.addBookToLibrary(new Book(2L, "A Journey", "Tony Blair", false));
+    libraryController.addBookToLibrary(new Book(3L, "A week with Gandhi", "L. Fischer", false));
+    libraryController.addBookToLibrary(new Book(4L, "Anna Karenina", "Leo Tolstoy", false));
+    libraryController.addBookToLibrary(new Book(5L, "Das Capital", "Karl Marks", false));
+    libraryController.addBookToLibrary(new Book(6L, "Bandit Queen", "Mala Sen", false));
+    libraryController.addBookToLibrary(new Book(7L, "Guide", "R. K. Narayanan", false));
+    libraryController.addBookToLibrary(new Book(8L, "Hind Swaraj", "M. K. Gandhi", false));
+    libraryController.addBookToLibrary(new Book(9L, "Historica", "Herodotus", false));
+    libraryController.addBookToLibrary(new Book(10L, "I Van Ho", "Walter Scot", false));
 
     System.out.println("***********************************");
     System.out.println("Welcome to " + library.getName());
@@ -27,7 +39,7 @@ public class LibraryApp {
       ch = sc.nextInt();
 
       switch (ch) {
-        case 1: System.out.println("case 1");
+        case 1: libraryController.printBookList();
                 break;
 
         case 2: System.out.println("case 2");
