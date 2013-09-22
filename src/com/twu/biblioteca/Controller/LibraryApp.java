@@ -7,13 +7,7 @@ import java.util.Scanner;
 
 public class LibraryApp {
 
-  public static void main(String args[]) {
-    String choice;
-    int ch;
-    String chBook;
-
-    LibraryController libraryController = new LibraryController();
-    Library library = libraryController.createLibrary(1L,"Bangalore Library");
+  private static void setUpLibrary(LibraryController libraryController) {
     libraryController.addBookToLibrary(new Book(1L, "HarryPotter", "J.K. Rowling", false));
     libraryController.addBookToLibrary(new Book(2L, "A Journey", "Tony Blair", false));
     libraryController.addBookToLibrary(new Book(3L, "A week with Gandhi", "L. Fischer", false));
@@ -24,6 +18,16 @@ public class LibraryApp {
     libraryController.addBookToLibrary(new Book(8L, "Hind Swaraj", "M. K. Gandhi", false));
     libraryController.addBookToLibrary(new Book(9L, "Historica", "Herodotus", false));
     libraryController.addBookToLibrary(new Book(10L, "I Van Ho", "Walter Scot", false));
+  }
+
+  public static void main(String args[]) {
+    String choice;
+    int ch;
+    String chBook;
+
+    LibraryController libraryController = new LibraryController();
+    Library library = libraryController.createLibrary(1L,"Bangalore Library");
+    setUpLibrary(libraryController);
 
     System.out.println("***********************************");
     System.out.println("Welcome to " + library.getName());
@@ -41,20 +45,20 @@ public class LibraryApp {
 
       switch (ch) {
         case 1: libraryController.printBookList();
-                break;
+          break;
 
         case 2: libraryController.printBookList();
-                System.out.println("Please enter book title to be issued");
-                chBook = sc.next();
-                if(libraryController.isBookIssued(chBook)) {
-                  System.out.println("Thank You! Enjoy the book.");
-                }
-                else
-                  System.out.println("Sorry we don't have that book yet.");
-                break;
+          System.out.println("Please enter book title to be issued");
+          chBook = sc.next();
+          if(libraryController.isBookIssued(chBook)) {
+            System.out.println("Thank You! Enjoy the book.");
+          }
+          else
+            System.out.println("Sorry we don't have that book yet.");
+          break;
 
         case 3: System.out.println("Please talk to a Librarian. Thank you.");
-                break;
+          break;
 
         default: System.out.println("Select a valid option!!");
       }

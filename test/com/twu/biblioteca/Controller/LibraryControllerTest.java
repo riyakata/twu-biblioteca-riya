@@ -3,11 +3,14 @@ package com.twu.biblioteca.Controller;
 import com.twu.biblioteca.Domain.Book;
 import com.twu.biblioteca.Domain.Library;
 import org.junit.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class LibraryControllerTest {
 
@@ -23,10 +26,11 @@ public class LibraryControllerTest {
   public void shouldAddBookToList() {
     LibraryController libraryController = new LibraryController();
     Book book = new Book(1L, "HarryPotter", "J.K. Rowling", false);
+//    BookController bookController = mock(BookController.class);
 
     libraryController.addBookToLibrary(book);
-
     assertThat(libraryController.getAllBooks().size(), is(3));
+//    verify(bookController).addBook(book);
   }
 
   @Test
@@ -34,9 +38,7 @@ public class LibraryControllerTest {
     LibraryController libraryController = new LibraryController();
     Book book = new Book(1L, "HarryPotter", "J.K. Rowling", false);
     libraryController.addBookToLibrary(book);
-
     List books = libraryController.getAllBooks();
-
     assertThat(books.size(), is(2));
   }
 
@@ -47,7 +49,7 @@ public class LibraryControllerTest {
     Book book = new Book(1L, "HarryPotter", "J.K. Rowling", false);
     libraryController.addBookToLibrary(book);
     Boolean isIssued = libraryController.isBookIssued("HarryPotter");
-    assertThat(isIssued, is(true));
+    assertThat(isIssued, is(false));
   }
 
   @Test
@@ -56,7 +58,7 @@ public class LibraryControllerTest {
     LibraryController libraryController = new LibraryController();
     libraryController.addBookToLibrary(book);
 
-    libraryController.updateBookStatus(book,true);
+    libraryController.updateBookStatus("HarryPotter1",true);
 
     assertThat(book.getIsIssued(), is(true));
   }

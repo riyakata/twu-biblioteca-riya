@@ -1,6 +1,6 @@
 package com.twu.biblioteca.Domain;
 
-public class User extends BaseModal {
+public class User extends BaseModel {
 
   private String name;
   private Long employeeId;

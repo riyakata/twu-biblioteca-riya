@@ -1,6 +1,6 @@
 package com.twu.biblioteca.Domain;
 
-public class Book extends BaseModal {
+public class Book extends BaseModel {
 
   private String title;
   private String author;

@@ -5,10 +5,7 @@ import com.twu.biblioteca.Domain.Library;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class LibraryController {
-
-  public static List books = new ArrayList();
 
   public Library createLibrary(Long id, String name) {
     Library library = new Library(id,name);
@@ -16,11 +13,12 @@ public class LibraryController {
   }
 
   public void addBookToLibrary(Book book) {
-    books.add(book);
+    BookController bookController = new BookController();
+    bookController.addBook(book);
   }
 
   public List<Book> getAllBooks() {
-    return books;
+    return new BookController().getAllBooks();
   }
 
   public void printBookList() {
@@ -31,20 +29,13 @@ public class LibraryController {
   }
 
   public boolean isBookIssued(String title) {
-    for (Book book : getAllBooks())
-    {
-      if (book.getTitle().equals(title)) {
-        Boolean isIssued = book.getIsIssued();
-        if(!isIssued)
-          updateBookStatus(book,true);
-        return !isIssued;
-      }
-    }
-    return false;
+    Boolean isIssued = new BookController().isBookIssued(title);
+    return isIssued;
   }
 
-  public void updateBookStatus(Book book, boolean status) {
+  public void updateBookStatus(String title, boolean status) {
+    BookController bookController = new BookController();
+    Book book = bookController.getBookByTitle(title);
     book.setIsIssued(status);
   }
-
 }
