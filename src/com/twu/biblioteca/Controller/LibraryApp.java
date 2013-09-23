@@ -2,6 +2,7 @@ package com.twu.biblioteca.Controller;
 
 import com.twu.biblioteca.Domain.Book;
 import com.twu.biblioteca.Domain.Library;
+import com.twu.biblioteca.Domain.User;
 
 import java.util.Scanner;
 
@@ -20,6 +21,15 @@ public class LibraryApp {
     libraryController.addBookToLibrary(new Book(10L, "I Van Ho", "Walter Scot", false));
   }
 
+  private static void setUpUsers() {
+    UserController userController = new UserController();
+    userController.addUser(new User(1L, "John", 1L, "111-1111", "password-john"));
+    userController.addUser(new User(2L, "Harry", 2L, "222-2222", "password-harry"));
+    userController.addUser(new User(3L, "Tom", 3L, "333-3333", "password-tom"));
+    userController.addUser(new User(4L, "Bob", 4L, "444-4444", "password-bob"));
+    userController.addUser(new User(5L, "Tony", 5L, "555-5555", "password-tony"));
+  }
+
   public static void main(String args[]) {
     String choice;
     int ch;
@@ -28,6 +38,7 @@ public class LibraryApp {
     LibraryController libraryController = new LibraryController();
     Library library = libraryController.createLibrary(1L,"Bangalore Library");
     setUpLibrary(libraryController);
+    setUpUsers();
 
     System.out.println("***********************************");
     System.out.println("Welcome to " + library.getName());
