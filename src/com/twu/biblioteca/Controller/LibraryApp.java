@@ -23,11 +23,11 @@ public class LibraryApp {
 
   private static void setUpUsers() {
     UserController userController = new UserController();
-    userController.addUser(new User(1L, "John", 1L, "111-1111", "password-john"));
-    userController.addUser(new User(2L, "Harry", 2L, "222-2222", "password-harry"));
-    userController.addUser(new User(3L, "Tom", 3L, "333-3333", "password-tom"));
-    userController.addUser(new User(4L, "Bob", 4L, "444-4444", "password-bob"));
-    userController.addUser(new User(5L, "Tony", 5L, "555-5555", "password-tony"));
+    userController.addUser(new User(1L, "John", 1L, "111-1111", "password-john", "john@gmail.com", "9999111122"));
+    userController.addUser(new User(2L, "Harry", 2L, "222-2222", "password-harry", "harry@gmail.com", "9999111133"));
+    userController.addUser(new User(3L, "Tom", 3L, "333-3333", "password-tom", "tom@gmail.com", "9999111144"));
+    userController.addUser(new User(4L, "Bob", 4L, "444-4444", "password-bob", "bob@gmail.com", "9999111155"));
+    userController.addUser(new User(5L, "Tony", 5L, "555-5555", "password-tony", "tony@gmail.com", "9999111166"));
   }
 
   public static void main(String args[]) {
