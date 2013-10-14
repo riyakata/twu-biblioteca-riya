@@ -17,6 +17,7 @@ public class UserTest {
     assertThat(user.getPassword(), is("password"));
     assertThat(user.getEmail(), is("john@gmail.com"));
     assertThat(user.getPhoneNumber(), is("9999111122"));
+    assertThat(user.getIsLoggedIn(), is(false));
   }
 
 }

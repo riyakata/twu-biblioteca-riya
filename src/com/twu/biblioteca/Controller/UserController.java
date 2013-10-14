@@ -42,7 +42,7 @@ public class UserController {
     return false;
   }
 
-  private User getUserByUsernameAndPassword(String username, String password) {
+  public User getUserByUsernameAndPassword(String username, String password) {
     for (User user : getAllUsers())
     {
       if (user.getUsername().equals(username) && user.getPassword().equals(password))

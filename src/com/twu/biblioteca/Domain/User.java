@@ -8,6 +8,7 @@ public class User extends BaseModel {
   private String password;
   private String email;
   private String phoneNumber;
+  private Boolean isLoggedIn;
 
   public User(Long id, String name, Long employeeId, String username, String password, String email, String phoneNumber) {
     this.id = id;
@@ -17,6 +18,7 @@ public class User extends BaseModel {
     this.password = password;
     this.email = email;
     this.phoneNumber = phoneNumber;
+    this.isLoggedIn = false;
   }
 
   public Long getId() {
@@ -45,6 +47,14 @@ public class User extends BaseModel {
 
   public String getPhoneNumber() {
     return phoneNumber;
+  }
+
+  public void setIsLoggedIn(boolean loggedIn) {
+    isLoggedIn = loggedIn;
+  }
+
+  public Boolean getIsLoggedIn() {
+    return isLoggedIn;
   }
 
 }
