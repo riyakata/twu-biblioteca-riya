@@ -2,13 +2,14 @@ package com.twu.biblioteca.Controller;
 
 import com.twu.biblioteca.Domain.Book;
 import com.twu.biblioteca.Domain.Library;
+import com.twu.biblioteca.Domain.Movie;
 import com.twu.biblioteca.Domain.User;
 
 import java.util.Scanner;
 
 public class LibraryApp {
 
-  private static void setUpLibrary(LibraryController libraryController) {
+  private static void setUpBooks(LibraryController libraryController) {
     libraryController.addBookToLibrary(new Book(1L, "HarryPotter", "J.K. Rowling", false));
     libraryController.addBookToLibrary(new Book(2L, "A Journey", "Tony Blair", false));
     libraryController.addBookToLibrary(new Book(3L, "A week with Gandhi", "L. Fischer", false));
@@ -19,6 +20,29 @@ public class LibraryApp {
     libraryController.addBookToLibrary(new Book(8L, "Hind Swaraj", "M. K. Gandhi", false));
     libraryController.addBookToLibrary(new Book(9L, "Historica", "Herodotus", false));
     libraryController.addBookToLibrary(new Book(10L, "I Van Ho", "Walter Scot", false));
+  }
+
+  private static void setUpMovies(LibraryController libraryController) {
+    libraryController.addMovieToLibrary(new Movie(1L, "Sholay", "1975",	"Ramesh Sippy",	"9"));
+    libraryController.addMovieToLibrary(new Movie(2L, "Krish",	"2006",	"Rakesh Roshan",	"8"));
+    libraryController.addMovieToLibrary(new Movie(3L, "Anaconda",	"1997",	"Luis Llosa",	"9"));
+    libraryController.addMovieToLibrary(new Movie(4L, "Baby's day out",	"1994",	"Patrick Read Johnson",	"9"));
+    libraryController.addMovieToLibrary(new Movie(5L, "Godzilla",	"2014",	"Gareth Edwards",	"9"));
+    libraryController.addMovieToLibrary(new Movie(6L, "Don",	"1978",	"Chandra Barot",	"8"));
+    libraryController.addMovieToLibrary(new Movie(7L, "3 Idiots",	"2009",	"Rajkumar Hirani",	"9"));
+    libraryController.addMovieToLibrary(new Movie(8L, "Aladdin",	"1992",	"Ron Clements",	"9"));
+    libraryController.addMovieToLibrary(new Movie(9L, "Batman",	"1989",	"Christopher Nolan",	"9"));
+    libraryController.addMovieToLibrary(new Movie(10L, "The chronicles of narnia", "2005", "Andrew Adamson", "9"));
+    libraryController.addMovieToLibrary(new Movie(11L, "Fight club", "1999", "David Fincher", "9"));
+    libraryController.addMovieToLibrary(new Movie(12L, "Harry Potter and the sorcerer's stone", "2001", "David Yates", "10"));
+    libraryController.addMovieToLibrary(new Movie(13L, "Harry potter and the chamber of secrets", "2002", "David Yates", "10"));
+    libraryController.addMovieToLibrary(new Movie(14L, "Harry potter and the goblet of fire", "2005", "David Yates", "10"));
+    libraryController.addMovieToLibrary(new Movie(15L, "Iron man", "1966", "Jon Favreau", "10"));
+  }
+
+  private static void setUpLibrary(LibraryController libraryController) {
+    setUpBooks(libraryController);
+    setUpMovies(libraryController);
   }
 
   private static void setUpUsers() {
@@ -57,15 +81,16 @@ public class LibraryApp {
       LoginController loginController = new LoginController();
       UserController userController = new UserController();
       Boolean isLoggedIn = loginController.isLoggedIn(userController.getUserByUsernameAndPassword(username, password));
-      System.out.println("1. View all the books ");
       if(isLoggedIn) {
-        System.out.println("2. Logout");
+        System.out.println("1. Logout");
       }
       else {
-        System.out.println("2. Login");
+        System.out.println("1. Login");
       }
-      System.out.println("3. Reserve a book ");
-      System.out.println("4. View your membership details ");
+      System.out.println("2. View all the books ");
+      System.out.println("3. View all the movies ");
+      System.out.println("4. Reserve a book ");
+      System.out.println("5. View your membership details ");
       System.out.println("\nPlease select an option!");
       System.out.println("***********************************");
 
@@ -73,10 +98,7 @@ public class LibraryApp {
       ch = sc.nextInt();
 
       switch (ch) {
-        case 1: libraryController.printBookList();
-                break;
-
-        case 2: if(isLoggedIn) {
+        case 1: if(isLoggedIn) {
                   loginController.logoutUser(userController.getUserByUsernameAndPassword(username, password));
                   System.out.println("User logged out successfully");
                 }
@@ -96,7 +118,13 @@ public class LibraryApp {
                 }
                 break;
 
-        case 3: if(isLoggedIn) {
+        case 2: libraryController.printBookList();
+                break;
+
+        case 3: libraryController.printMovieList();
+                break;
+
+        case 4: if(isLoggedIn) {
                   libraryController.printBookList();
                   System.out.println("Please enter book title to be issued");
                   chBook = sc.next();
@@ -111,7 +139,7 @@ public class LibraryApp {
                 }
                 break;
 
-        case 4: if(isLoggedIn) {
+        case 5: if(isLoggedIn) {
                   User user = userController.getUserByUsernameAndPassword(username, password);
                   System.out.println("Name: " + user.getName());
                   System.out.println("Email: " + user.getEmail());
